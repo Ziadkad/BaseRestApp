@@ -1,7 +1,6 @@
 ﻿using BaseRestApp.Dtos;
-using BaseRestApp.Entities;
 using BaseRestApp.Exceptions;
-using BaseRestApp.Services;
+using BaseRestApp.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BaseRestApp.Controllers;
@@ -10,9 +9,9 @@ namespace BaseRestApp.Controllers;
 [ApiController]
 public class TaskItemController : ControllerBase
 {
-    private readonly TaskItemService _taskItemService;
+    private readonly ITaskItemService _taskItemService;
 
-    public TaskItemController(TaskItemService taskItemService)
+    public TaskItemController(ITaskItemService taskItemService)
     {
         _taskItemService = taskItemService;
     }
