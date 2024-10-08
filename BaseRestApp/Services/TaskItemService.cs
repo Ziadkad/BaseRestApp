@@ -47,6 +47,7 @@ public class TaskItemService : ITaskItemService
         }
         TaskItem taskItemCheck = await _taskItemRepository.GetAsNoTracking(ti => ti.Id == id) ?? throw new TaskItemNotFoundException(id);
         TaskItem taskItem = _mapper.Map<TaskItem>(taskItemDto);
+        taskItem.UpdatedAt = DateTime.Now;
         if (await _taskItemRepository.UpdateAsync(taskItem))
         {
             return;
